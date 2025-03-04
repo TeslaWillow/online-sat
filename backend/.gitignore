@@ -1,0 +1,44 @@
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+__pycache__/
+db.sqlite3
+media/
+staticfiles/
+
+# Virtual environment
+venv/
+env/
+
+# Django migrations (migrations are tracked by Django itself)
+*/migrations/*
+
+# Test coverage reports
+.coverage
+*.cover
+*.py,cover
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Python egg files
+*.egg
+*.egg-info/
+.eggs/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
