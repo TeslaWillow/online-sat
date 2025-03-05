@@ -57,14 +57,7 @@ def updateBook(request, pk):
     except Book.DoesNotExist:
         # If not exist 404
         return Response({"detail": "Book not found."}, status=status.HTTP_404_NOT_FOUND)
-    # Validate if isbn tried to change
-    isbn = request.data.get('isbn')
-    # Verify if ISBN already exists
-    if isbn and Book.objects.filter(isbn=isbn).exists():
-        return Response(
-            {"error": "A book with this ISBN already exists."},
-            status=status.HTTP_400_BAD_REQUEST  # Bad request
-        )
+    
     serializer = BookSerializer(instance=book, data=request.data, partial=True)
     # Validate
     if serializer.is_valid():

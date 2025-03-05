@@ -1,0 +1,59 @@
+@if (bookForm) {
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">{{ !isEditing ? 'Register a Book' : 'Edit a Book' }}</div>
+      <div class="card-body">
+        <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group mb-2">
+            <label for="title">Title</label>
+            <input type="text" id="title" class="form-control" formControlName="title" placeholder="Harry Potter"
+              [ngClass]="{'is-invalid': isInvalid('title')}"
+            >
+            <small *ngIf="isInvalid('title')" class="text-danger">Title is required</small>
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="author">Author</label>
+            <input type="text" id="author" class="form-control" formControlName="author"
+              [ngClass]="{'is-invalid': isInvalid('author')}"
+            >
+            <small *ngIf="isInvalid('author')" class="text-danger">Author is required</small>
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="publication_year">Publication year</label>
+            <input type="number" id="publication_year" class="form-control" formControlName="publication_year"
+              [ngClass]="{'is-invalid': isInvalid('publication_year')}"
+            >
+            <small *ngIf="isInvalid('publication_year')" class="text-danger">Publication year must be between 1000 and actual year ({{ actual_year }})</small>
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="isbn">ISBN</label>
+            <input type="number" id="isbn" class="form-control" formControlName="isbn"
+              [ngClass]="{'is-invalid': isInvalid('isbn')}"
+            >
+            <small *ngIf="isInvalid('isbn')" class="text-danger">isbn must have 13 digits</small>
+          </div>
+
+          <div class="form-group mb-2">
+            <label for="available_copies">Avalible copies</label>
+            <input type="number" id="available_copies" class="form-control" formControlName="available_copies" min="0"
+              [ngClass]="{'is-invalid': isInvalid('available_copies')}"
+            >
+            <small *ngIf="isInvalid('available_copies')" class="text-danger">Avalible copies must be a positive integer</small>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success" >
+              {{ !isEditing ? 'Save Book' : 'Edit Book' }}
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+}

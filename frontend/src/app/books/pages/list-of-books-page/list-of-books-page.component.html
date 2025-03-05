@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-12 d-flex justify-content-end">
+    <button
+      class="btn btn-outline-success"
+      [routerLink]="['/create-book']"
+    ><i class="bi bi-plus-circle"></i> Create Book</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table table-borderless table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Publication Year</th>
+          <th scope="col">Isbn</th>
+          <th scope="col">Avalible copies</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (book of books; track $index) {
+          <tr>
+            <th scope="row">{{$index}}</th>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.publication_year }}</td>
+            <td>{{book.isbn}}</td>
+            <td>{{book.available_copies}}</td>
+            <td>
+              <div class="d-flex justify-content-start">
+                <div>
+                  <button
+                    class="btn btn-small btn-primary"
+                    [routerLink]="['/books', book.id]"
+                  >
+                    <i class="bi bi-pencil-square"></i>
+                  </button>
+                </div>
+                <div class="mx-1">
+                  <button
+                    (click)="askToDeleteBook(book.id)"
+                    class="btn btn-small btn-danger"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+  </div>
+</div>
