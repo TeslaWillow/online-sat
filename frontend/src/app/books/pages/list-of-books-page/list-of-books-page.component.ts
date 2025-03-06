@@ -50,6 +50,26 @@ export default class ListOfBooksPageComponent implements OnInit {
     });
   }
 
+  public goPreviousResults(): void {
+    if(!this.booksPaginated?.previous){ return; }
+
+    this._booksService.changePage( this.booksPaginated!.previous ).subscribe({
+      next: (booksPaginated) => {
+        this.booksPaginated = booksPaginated;
+      }
+    });
+  }
+
+  public goNextResults(): void {
+    if(!this.booksPaginated?.next){ return; }
+
+    this._booksService.changePage( this.booksPaginated!.next ).subscribe({
+      next: (booksPaginated) => {
+        this.booksPaginated = booksPaginated;
+      }
+    });
+  }
+
   private _deleteBook( id: number ): void {
     this._booksService.deleteBook(id).subscribe({
       next: () => { this._getBooks(); },

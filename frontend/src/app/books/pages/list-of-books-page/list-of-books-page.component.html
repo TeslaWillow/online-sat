@@ -57,3 +57,22 @@
 
   </div>
 </div>
+
+<div class="row">
+  <div class="col-12 d-flex justify-content-between">
+    <div>
+      <button
+        class="btn btn-outline-dark"
+        [disabled]="!this.booksPaginated?.previous"
+        (click)="goPreviousResults()"
+      >Previous</button>
+    </div>
+    <div>
+      <button
+        class="btn btn-outline-dark"
+        [disabled]="!this.booksPaginated?.next"
+        (click)="goNextResults()"
+      >Next</button>
+    </div>
+  </div>
+</div>

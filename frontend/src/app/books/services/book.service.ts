@@ -25,6 +25,10 @@ export class BookService {
     return this.http.get<Book>(`${this.base_url}/${this.endpoint}/read/${id}`);
   }
 
+  public changePage( url: string ): Observable<BooksPaginated> {
+    return this.http.get<BooksPaginated>(`${url}`);
+  }
+
   public updateBook( id: number, data: SaveBook ): Observable<Book>{
     return this.http.put<Book>(`${this.base_url}/${this.endpoint}/update/${id}`, data);
   }
